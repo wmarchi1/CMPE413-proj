@@ -66,11 +66,12 @@ begin
         ----------------------------------------------------------------
         -- TEST 1: Write to address 0000, then read back
         ----------------------------------------------------------------
-        
         rd_wr      <= '0'; -- Write
         block_off  <= "00";
         byte_off   <= "00";
         data_input <= x"A1";
+        wait for 1 ns;
+        mem_enable <= '1';
         wait for 18 ns;
         data_input <= x"00";
         wait for 2 ns;
