@@ -18,7 +18,7 @@ entity chip is
         Gnd        : in  std_logic;
         busy       : out std_logic; --
         mem_en     : out std_logic; --
-        mem_add    : out std_logic_vector(7 downto 0)); --
+        mem_add    : out std_logic_vector(7 downto 0); --
         counter    : out integer range 0 to 31;
         MAIN_MEM_EN : out std_logic;
         O_EN       : out std_logic;
@@ -31,6 +31,7 @@ entity chip is
         s_reset : out std_logic;
         Next_State : out std_logic_vector(4 downto 0);
         CVT        : out  std_logic
+    );
 end chip;
   
     architecture structural of chip is
@@ -96,9 +97,9 @@ end chip;
         signal cpu_address_net, cpu_data_net : std_logic_vector(7 downto 0);
         signal byte_off_net : std_logic_vector(1 downto 0);
 
-        signal counter    : integer range 0 to 31 := 0;
-        signal O_EN       : std_logic := '0';
-        signal CS, Next_State : std_logic_vector(4 downto 0);
+        --signal counter    : integer range 0 to 31 := 0;
+        --signal O_EN       : std_logic := '0';
+        --signal CS, Next_State : std_logic_vector(4 downto 0);
 
 
     begin
@@ -106,7 +107,7 @@ end chip;
         dff8bit_pos_inst0 : dff8bit_pos
             port map(
                 d => cpu_add,
-                clk => busy_net, 
+                clk => clk, 
                 q => cpu_address_net
             );
         
@@ -114,7 +115,7 @@ end chip;
         dff8bit_pos_inst1 : dff8bit_pos
             port map(
                 d => cpu_data,
-                clk => busy_net,
+                clk => clk,
                 q => cpu_data_net
             );
 
@@ -122,7 +123,7 @@ end chip;
         dff_inst0 : dff
             port map(
                 d => cpu_rd_wrn,
-                clk => busy_net,
+                clk => clk,
                 q => read_write_net
             );
 
@@ -180,4 +181,3 @@ end chip;
         Next_State <= Next_State;
         CVT <= cvt_net;
     end structural;
-
