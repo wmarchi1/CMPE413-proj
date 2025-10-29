@@ -2,10 +2,10 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity tb_chip is
-end tb_chip;
+entity chip_tb is
+end chip_tb;
 
-architecture behavior of tb_chip is
+architecture behavior of chip_tb is
     -- DUT component
     component chip
         port (
