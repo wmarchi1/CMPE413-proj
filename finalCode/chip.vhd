@@ -3,6 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_textio.all;
 use IEEE.std_logic_arith.all;
 use STD.textio.all;
+use IEEE.NUMERIC_STD.ALL;
   
 entity chip is
     port (
