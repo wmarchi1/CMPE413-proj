@@ -40,20 +40,21 @@ architecture behavior of peripheral_interface2_tb is
 
     -- Testbench signals
     signal rd_wr_tb           : std_logic := '0';
-    signal start_tb           : std_logic := '0';
-    signal reset_tb           : std_logic := '0';
+    signal cache_mem_enable_tb: std_logic := '0';
     signal cpu_address_tb     : std_logic_vector(7 downto 0) := (others => '0');
     signal main_mem_data_in_tb: std_logic_vector(7 downto 0) := (others => '0');
     signal cpu_data_in_tb     : std_logic_vector(7 downto 0) := (others => '0');
-    signal cpu_data_out_tb    : std_logic_vector(7 downto 0);
-    signal cache_mem_enable_tb: std_logic := '0';
+    --signal cpu_data_out_tb    : std_logic_vector(7 downto 0);
+    --signal cache_mem_enable_tb: std_logic := '0';
     signal byte_address_tb    : std_logic_vector(1 downto 0) := (others => '0');
     signal byte_address_sel_tb: std_logic := '0';
+    signal reset_tb           : std_logic := '0';
     signal vt_reset_tb        : std_logic := '0';
     signal write_vt_tb        : std_logic := '0';
     signal data_sel_tb        : std_logic := '0';
     signal busy_tb            : std_logic := '0';
     signal cvt_tb             : std_logic;
+    signal start_tb           : std_logic := '0';--get rid of
 
     -- test output observation signals
     signal byte_off_mux_output_tb : std_logic_vector(1 downto 0);
@@ -105,7 +106,7 @@ begin
         -----------------------------------------------------------------
         -- Test 1: Select CPU data (data_sel = '0')
         -----------------------------------------------------------------
-        cpu_data_in_tb <= "00000000";
+        cpu_data_in_tb <= "00000001";
         main_mem_data_in_tb <= "11111111";
         cpu_address_tb <= "00001100";  -- lower bits 00
         wait for 1 ns;
@@ -122,20 +123,24 @@ begin
         wait for 1 ns;
         cache_mem_enable_tb <= '1';
         wait for 1 ns;
+        busy_tb <= '0';
+        wait for 1 ns;
         cache_mem_enable_tb <= '0';
         wait for 5 ns;
 
         rd_wr_tb <= '1';
+        busy_tb <= '1';
         wait for 5 ns;
         cache_mem_enable_tb <= '1';
         wait for 1 ns;
         busy_tb <= '0';
         wait for 1 ns;
-        cache_mem_enable_tb <= '1';
+        cache_mem_enable_tb <= '0';
         wait for 5 ns;
 -----------------------Now overwrite
         cpu_address_tb <= "00111100";
-        data_sel_tb <= '1';
+        --cpu_data_in_tb <= "ZZZZZZZZ";
+        data_sel_tb <= '0';
         wait for 1 ns;
         write_vt_tb <= '1';
         wait for 1 ns;
@@ -143,14 +148,21 @@ begin
         wait for 5 ns;
 
         rd_wr_tb <= '0';
+        --wait for 1 ns;
+        cpu_data_in_tb <= "11111111";
         busy_tb <= '1';
         wait for 1 ns;
         cache_mem_enable_tb <= '1';
+        wait for 1 ns;
+        busy_tb <= '0';
         wait for 1 ns;
         cache_mem_enable_tb <= '0';
         wait for 5 ns;
 -----------------------read again
         rd_wr_tb <= '1';
+        cpu_data_in_tb <= "ZZZZZZZZ";
+        busy_tb <= '1';
+        wait for 1 ns;
         wait for 5 ns;
         cache_mem_enable_tb <= '1';
         wait for 1 ns;
