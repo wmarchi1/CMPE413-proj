@@ -97,7 +97,8 @@ end chip;
         signal cpu_address_net, cpu_data_net : std_logic_vector(7 downto 0);
         signal byte_off_net : std_logic_vector(1 downto 0);
 
-        --signal counter    : integer range 0 to 31 := 0;
+        signal counter_f    : integer range 0 to 31 := 0;
+        signal counter_net    : integer range 0 to 31 := 0;
         --signal O_EN       : std_logic := '0';
         --signal CS, Next_State : std_logic_vector(4 downto 0);
 
@@ -134,7 +135,7 @@ end chip;
                 start  => start,
                 rd_wr_not => read_write_net,
                 CVT       => cvt_net,
-                counter   => counter, -- PROBLEM
+                counter   => counter_net, -- PROBLEM
                 Busy      => busy_net,
                 MAIN_MEM_EN => mem_en,
                 O_EN       => O_EN, -- PROBLEM
@@ -180,4 +181,5 @@ end chip;
         s_reset_f    <= vt_reset_net;
         Next_State_f <= Next_State;
         CVT_f <= cvt_net;
+        counter_f <= counter_net;
     end structural;
