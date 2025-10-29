@@ -1,145 +1,144 @@
-library IEEE; 
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
 entity tb_chip is
 end tb_chip;
 
 architecture behavior of tb_chip is
-
-    -- DUT component declaration
+    -- DUT component
     component chip
         port (
+            cpu_add    : in  std_logic_vector(7 downto 0);
+            cpu_data   : inout  std_logic_vector(7 downto 0);
+            cpu_rd_wrn : in  std_logic;
+            start      : in  std_logic;
             clk        : in  std_logic;
             reset      : in  std_logic;
-            start      : in  std_logic;
-            cpu_rd_wrn : in  std_logic;
-            cpu_add    : in  std_logic_vector(7 downto 0);  -- 8-bit
-            cpu_data   : inout std_logic_vector(7 downto 0);
             mem_data   : in  std_logic_vector(7 downto 0);
+            Vdd        : in  std_logic;
+            Gnd        : in  std_logic;
             busy       : out std_logic;
             mem_en     : out std_logic;
-            mem_add    : out std_logic_vector(7 downto 0)   -- 8-bit
+            mem_add    : out std_logic_vector(7 downto 0)
         );
     end component;
 
-    -- Testbench signals
-    signal clk        : std_logic := '0';
-    signal reset      : std_logic := '0';
-    signal start      : std_logic := '0';
-    signal cpu_rd_wrn : std_logic := '0';
-    signal cpu_add    : std_logic_vector(7 downto 0) := (others => '0');  -- 8-bit
-    signal cpu_data   : std_logic_vector(7 downto 0) := (others => '0');
-    signal mem_data   : std_logic_vector(7 downto 0) := (others => '0');
-    signal busy       : std_logic;
-    signal mem_en     : std_logic;
-    signal mem_add    : std_logic_vector(7 downto 0);  -- 8-bit
+    -- Signals
+    signal cpu_add_tb    : std_logic_vector(7 downto 0) := (others => '0');
+    signal cpu_data_tb   : std_logic_vector(7 downto 0) := (others => 'Z');
+    signal cpu_rd_wrn_tb : std_logic := '1';
+    signal start_tb      : std_logic := '0';
+    signal clk_tb        : std_logic := '0';
+    signal reset_tb      : std_logic := '0';
+    signal mem_data_tb   : std_logic_vector(7 downto 0) := (others => '0');
+    signal busy_tb       : std_logic;
+    signal mem_en_tb     : std_logic;
+    signal mem_add_tb    : std_logic_vector(7 downto 0);
+    signal Vdd_tb        : std_logic := '1';
+    signal Gnd_tb        : std_logic := '0';
 
     constant clk_period : time := 10 ns;
 
 begin
-
-    ------------------------------------------------------------------------
     -- Instantiate DUT
-    ------------------------------------------------------------------------
     uut: chip
         port map (
-            clk        => clk,
-            reset      => reset,
-            start      => start,
-            cpu_rd_wrn => cpu_rd_wrn,
-            cpu_add    => cpu_add,
-            cpu_data   => cpu_data,
-            mem_data   => mem_data,
-            busy       => busy,
-            mem_en     => mem_en,
-            mem_add    => mem_add
+            cpu_add => cpu_add_tb,
+            cpu_data => cpu_data_tb,
+            cpu_rd_wrn => cpu_rd_wrn_tb,
+            start => start_tb,
+            clk => clk_tb,
+            reset => reset_tb,
+            mem_data => mem_data_tb,
+            Vdd => Vdd_tb,
+            Gnd => Gnd_tb,
+            busy => busy_tb,
+            mem_en => mem_en_tb,
+            mem_add => mem_add_tb
         );
 
-    ------------------------------------------------------------------------
     -- Clock process
-    ------------------------------------------------------------------------
     clk_process : process
     begin
-        while true loop
-            clk <= '1';
-            wait for clk_period/2;
-            clk <= '0';
-            wait for clk_period/2;
-        end loop;
+        clk_tb <= '0';
+        wait for clk_period / 2;
+        clk_tb <= '1';
+        wait for clk_period / 2;
     end process;
 
-    ------------------------------------------------------------------------
-    -- Stimulus process: READ MISS -> READ HIT -> WRITE HIT
-    ------------------------------------------------------------------------
+    -- Stimulus process
     stim_proc: process
     begin
-        -- Reset sequence
-        reset <= '1';
-        wait for clk_period * 2;
-        reset <= '0';
-        wait for clk_period * 2;
-
-        -- Common address for all operations
-        cpu_add <= x"0C";  -- 8-bit address (hex 0C = decimal 12)
-
-        --------------------------------------------------------------------
-        -- 1) READ MISS
-        --------------------------------------------------------------------
-        start <= '1';
-        cpu_rd_wrn <= '1';   -- Read
-        cpu_data <= (others => 'Z');
-        wait for clk_period;
-        start <= '0';
-        -- Simulate memory providing data bytes sequentially
-        wait until mem_en = '1';
-        mem_add <= cpu_add;  -- Output memory address same as CPU address
-        wait for clk_period * 8; mem_data <= x"01";
-        wait for clk_period * 2; mem_data <= x"02";
-        wait for clk_period * 2; mem_data <= x"03";
-        wait for clk_period * 2; mem_data <= x"04";
-        wait until busy = '0';
+        ------------------------------------------------------
+        -- Reset sequence (2 cycles)
+        ------------------------------------------------------
+        reset_tb <= '0';
+        wait for 2 * clk_period;
+        reset_tb <= '1';
+        wait for 2 * clk_period;
+        reset_tb <= '0';
         wait for clk_period;
 
-        for i in 1 to 4 loop
-            wait for clk_period;
-        end loop;
-
-        --------------------------------------------------------------------
-        -- 2) READ HIT
-        --------------------------------------------------------------------
-        start <= '1';
-        cpu_rd_wrn <= '1';   -- Read
-        cpu_data <= (others => 'Z');
+        ------------------------------------------------------
+        -- READ MISS: Address 0x00 (causes memory fetch)
+        ------------------------------------------------------
+        cpu_add_tb <= x"00";
+        cpu_rd_wrn_tb <= '1';   -- read
+        start_tb <= '1';
         wait for clk_period;
-        start <= '0';
-        wait until busy = '0';
+        start_tb <= '0';
+
+        -- Simulate memory returning data after 8 cycles
+        wait for 8 * clk_period;
+        mem_data_tb <= x"AA";
+        wait for 2 * clk_period;
+        mem_data_tb <= x"BB";
+        wait for 2 * clk_period;
+        mem_data_tb <= x"CC";
+        wait for 2 * clk_period;
+        mem_data_tb <= x"DD";
+        wait for 2 * clk_period;
+        mem_data_tb <= (others => '0');
+        wait for 4 * clk_period;
+
+        ------------------------------------------------------
+        -- WRITE HIT: Address 0x03, data = 0xFF
+        ------------------------------------------------------
+        cpu_add_tb <= x"03";
+        cpu_data_tb <= x"FF";
+        cpu_rd_wrn_tb <= '0';   -- write
+        start_tb <= '1';
         wait for clk_period;
+        start_tb <= '0';
+        wait for 4 * clk_period; -- allow busy to clear
 
-        for i in 1 to 4 loop
-            wait for clk_period;
-        end loop;
-
-        --------------------------------------------------------------------
-        -- 3) WRITE HIT
-        --------------------------------------------------------------------
-        start <= '1';
-        cpu_rd_wrn <= '0';   -- Write
-        cpu_data <= x"F0";   -- Data to write
+        ------------------------------------------------------
+        -- READ HIT: Address 0x03
+        ------------------------------------------------------
+        cpu_add_tb <= x"03";
+        cpu_rd_wrn_tb <= '1';   -- read
+        start_tb <= '1';
         wait for clk_period;
-        start <= '0';
-        wait until busy = '0';
+        start_tb <= '0';
+        wait for 4 * clk_period;
+
+        ------------------------------------------------------
+        -- WRITE MISS: Address 0xFF, data = 0xAA
+        ------------------------------------------------------
+        cpu_add_tb <= x"FF";
+        cpu_data_tb <= x"AA";
+        cpu_rd_wrn_tb <= '0';
+        start_tb <= '1';
         wait for clk_period;
+        start_tb <= '0';
+        wait for 4 * clk_period;
 
-        for i in 1 to 4 loop
-            wait for clk_period;
-        end loop;
-
-        --------------------------------------------------------------------
-        -- End simulation
-        --------------------------------------------------------------------
-        wait for clk_period * 10;
+        ------------------------------------------------------
+        -- End of simulation
+        ------------------------------------------------------
+        wait for 20 * clk_period;
+        assert false report "Simulation Finished Successfully" severity note;
         wait;
     end process;
-
 end behavior;
