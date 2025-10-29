@@ -20,17 +20,17 @@ entity chip is
         mem_en     : out std_logic; --
         mem_add    : out std_logic_vector(7 downto 0); --
         counter    : out integer range 0 to 31;
-        MAIN_MEM_EN : out std_logic;
-        O_EN       : out std_logic;
-        WR_TAG     : out std_logic;
-        ST_SEL     : out std_logic;
-        DATA_SEL   : out std_logic;
-        M_EN       : out std_logic;
-        B_OFFSET   : out std_logic_vector(1 downto 0);
-        CS         : out std_logic_vector(4 downto 0);
-        s_reset : out std_logic;
-        Next_State : out std_logic_vector(4 downto 0);
-        CVT        : out  std_logic
+        MAIN_MEM_EN_f : out std_logic;
+        O_EN_f       : out std_logic;
+        WR_TAG_f     : out std_logic;
+        ST_SEL_f     : out std_logic;
+        DATA_SEL_f   : out std_logic;
+        M_EN_f       : out std_logic;
+        B_OFFSET_f   : out std_logic_vector(1 downto 0);
+        CS_f         : out std_logic_vector(4 downto 0);
+        s_reset_f : out std_logic;
+        Next_State_f : out std_logic_vector(4 downto 0);
+        CVT_f        : out  std_logic
     );
 end chip;
   
@@ -169,15 +169,15 @@ end chip;
 
         mem_add <= cpu_address_net;
         busy      <= busy_net;
-        MAIN_MEM_EN <= mem_en;
-        O_EN       <= O_EN;
-        WR_TAG     <= wr_tag_net;
-        ST_SEL     <= byte_address_sel_net;
-        DATA_SEL   <= data_sel_net;
-        M_EN       <= cache_mem_enable_net;
-        B_OFFSET   <= byte_off_net;
-        CS         <= CS;
-        s_reset    <= vt_reset_net;
-        Next_State <= Next_State;
-        CVT <= cvt_net;
+        MAIN_MEM_EN_f <= mem_en;
+        O_EN_f       <= O_EN;
+        WR_TAG_f     <= wr_tag_net;
+        ST_SEL_f     <= byte_address_sel_net;
+        DATA_SEL_f   <= data_sel_net;
+        M_EN_f       <= cache_mem_enable_net;
+        B_OFFSET_f   <= byte_off_net;
+        CS_f         <= CS;
+        s_reset_f    <= vt_reset_net;
+        Next_State_f <= Next_State;
+        CVT_f <= cvt_net;
     end structural;
