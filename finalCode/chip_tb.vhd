@@ -25,17 +25,17 @@ architecture behavior of chip_tb is
             mem_en      : out std_logic;
             mem_add     : out std_logic_vector(7 downto 0);
             counter     : out integer range 0 to 31;
-            MAIN_MEM_EN : out std_logic;
-            O_EN        : out std_logic;
-            WR_TAG      : out std_logic;
-            ST_SEL      : out std_logic;
-            DATA_SEL    : out std_logic;
-            M_EN        : out std_logic;
-            B_OFFSET    : out std_logic_vector(1 downto 0);
-            CS          : out std_logic_vector(4 downto 0);
-            s_reset     : out std_logic;
-            Next_State  : out std_logic_vector(4 downto 0);
-            CVT         : out std_logic
+            MAIN_MEM_EN_f : out std_logic;
+            O_EN_f        : out std_logic;
+            WR_TAG_f      : out std_logic;
+            ST_SEL_f      : out std_logic;
+            DATA_SEL_f    : out std_logic;
+            M_EN_f        : out std_logic;
+            B_OFFSET_f    : out std_logic_vector(1 downto 0);
+            CS_f          : out std_logic_vector(4 downto 0);
+            s_reset_f     : out std_logic;
+            Next_State_f  : out std_logic_vector(4 downto 0);
+            CVT_f         : out std_logic
         );
     end component;
 
@@ -89,17 +89,17 @@ begin
             mem_en      => mem_en_tb,
             mem_add     => mem_add_tb,
             counter     => counter_tb,
-            MAIN_MEM_EN => MAIN_MEM_EN_tb,
-            O_EN        => O_EN_tb,
-            WR_TAG      => WR_TAG_tb,
-            ST_SEL      => ST_SEL_tb,
-            DATA_SEL    => DATA_SEL_tb,
-            M_EN        => M_EN_tb,
-            B_OFFSET    => B_OFFSET_tb,
-            CS          => CS_tb,
-            s_reset     => s_reset_tb,
-            Next_State  => Next_State_tb,
-            CVT         => CVT_tb
+            MAIN_MEM_EN_f => MAIN_MEM_EN_tb,
+            O_EN_f        => O_EN_tb,
+            WR_TAG_f      => WR_TAG_tb,
+            ST_SEL_f      => ST_SEL_tb,
+            DATA_SEL_f    => DATA_SEL_tb,
+            M_EN_f        => M_EN_tb,
+            B_OFFSET_f    => B_OFFSET_tb,
+            CS_f          => CS_tb,
+            s_reset_f     => s_reset_tb,
+            Next_State_f  => Next_State_tb,
+            CVT_f         => CVT_tb
         );
 
     ------------------------------------------------------------------------
