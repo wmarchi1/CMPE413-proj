@@ -38,26 +38,44 @@ architecture Behavioral of cache_fsm is
     signal st_select_internal, data_select_internal : std_logic := '0';
 	signal s_reset_internal : std_logic := '0';
 	signal wr_tag_internal : std_logic := '0';
+	signal s_reset_d        : std_logic := '0';
+	signal reset_d1         : std_logic := '0';
 begin
 
-    process(clk, reset)
-	begin
-		if rising_edge(reset) then
-			current_state <= Idle;
-			Busy <= '0';
-			s_reset_internal <= '0'; -- not active immediately
-		elsif rising_edge(clk) then
-			if reset = '1' then
-				s_reset_internal <= '1';  -- half cycle after reset asserted
-			else
-				s_reset_internal <= '0';  -- off as soon as reset is low
-			end if;
-		elsif falling_edge(clk) then
-			current_state <= next_state_sig;
-			Busy <= busy_internal;
-			S_RESET <= s_reset_internal;
+
+-------------------------------------------------------------
+-- 1. Generate one-cycle S_RESET pulse (after reset rising)
+-------------------------------------------------------------
+process(clk)
+begin
+    if rising_edge(clk) then
+        reset_d1 <= reset;
+
+        -- Detect rising edge of reset, issue 1-cycle pulse
+        if (reset = '1' and reset_d1 = '0') then
+            s_reset_internal <= '1';
+        else
+            s_reset_internal <= '0';
+        end if;
     end if;
-	end process;
+end process;
+
+S_RESET <= s_reset_internal;
+
+-------------------------------------------------------------
+-- 2. State register and Busy update (on falling edge)
+-------------------------------------------------------------
+process(clk)
+begin
+    if reset = '1' then
+        current_state <= Idle;
+        Busy          <= '0';
+    elsif falling_edge(clk) then
+        current_state <= next_state_sig;
+        Busy          <= busy_internal;
+    end if;
+end process;
+
 
 
     process(current_state, start, rd_wr_not, CVT, counter, reset)
@@ -203,7 +221,8 @@ begin
         end case;
     end process;
     
-    process(next_state_sig)
+    -- process(next_state_sig)
+	process(next_state_sig)
     begin
         case next_state_sig is
             when Idle | Done | RD_HIT =>
