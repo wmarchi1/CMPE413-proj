@@ -1,0 +1,61 @@
+-- exec xvhdl and2.vhd inv.vhd selector.vhd tx.vhd Dlatch.vhd cacheCell.vhd cacheCell_tb.vhd
+-- exec xelab cacheCell_tb -debug typical -s sim_out
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity cacheCell_tb is
+-- Testbench has no ports
+end cacheCell_tb;
+
+architecture behavior of cacheCell_tb is
+
+    -- Component declaration for the unit under test (UUT)
+    component cacheCell
+        port(
+            chip_enable : in std_logic;
+            rd_wr       : in std_logic;
+            data_in     : in std_logic;
+            data_out    : out std_logic
+        );
+    end component;
+
+    -- Testbench signals to connect to UUT
+    signal chip_enable_tb : std_logic;
+    signal rd_wr_tb       : std_logic;
+    signal data_in_tb     : std_logic;
+    signal data_out_tb    : std_logic;
+
+begin
+
+    -- Instantiate the Unit Under Test (UUT)
+    uut: cacheCell
+        port map(
+            chip_enable => chip_enable_tb,
+            rd_wr       => rd_wr_tb,
+            data_in     => data_in_tb,
+            data_out    => data_out_tb
+        );
+
+    -- Test process
+    stim_proc: process
+    begin
+        -- Enable chip
+        chip_enable_tb <= '1';
+        
+        
+        rd_wr_tb   <= '0';   -- write mode
+        wait for 5 ns;
+        data_in_tb <= '1';
+        wait for 10 ns;
+        chip_enable_tb <= '0';
+        wait for 4 ns;
+        data_in_tb <= '0';
+        chip_enable_tb <= '1';
+        rd_wr_tb <= '1';
+        wait for 10 ns;
+        wait;
+
+    end process stim_proc;
+
+end behavior;

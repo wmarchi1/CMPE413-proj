@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# xsim v2024.2.2 (64-bit)
+# SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+# IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+# SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+# Start of session at: Wed Oct 29 20:16:16 2025
+# Process ID         : 553317
+# Current directory  : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj
+# Command line       : xsim -source {xsim.dir/sim_out/xsim_script.tcl}
+# Log file           : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/xsim.log
+# Journal file       : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/xsim.jou
+# Running On         : ite375pc10.cs.umbc.edu
+# Platform           : unknown
+# Operating System   : unknown
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-11700 @ 2.50GHz
+# CPU Frequency      : 4700.000 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 33088 MB
+# Swap memory        : 0 MB
+# Total Virtual      : 33088 MB
+# Available Virtual  : 28659 MB
+#-----------------------------------------------------------
+start_gui
+source xsim.dir/sim_out/xsim_script.tcl
+create_wave_config; add_wave /; set_property needs_save false [current_wave_config]
+run all
+close_sim
