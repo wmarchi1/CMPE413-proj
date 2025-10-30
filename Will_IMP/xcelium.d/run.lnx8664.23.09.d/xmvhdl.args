@@ -1,0 +1,20 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+./xcelium.d/run.lnx8664.23.09.d
+-RUNMODE
+cacheCell.vhd
+Dlatch.vhd
+tx.vhd
+selector.vhd
+and2.vhd
+inv.vhd
+cacheCell_tb.vhd
+-CDSLIB
+./xcelium.d/run.lnx8664.23.09.d/cdsrun.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.23.09.d/hdlrun.var
+-MESSAGES
+-UPDATE
