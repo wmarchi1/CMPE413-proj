@@ -1,0 +1,42 @@
+#-----------------------------------------------------------
+# xsim v2024.2.2 (64-bit)
+# SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+# IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+# SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+# Start of session at: Wed Oct 29 20:18:46 2025
+# Process ID         : 553964
+# Current directory  : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj
+# Command line       : xsim -source {xsim.dir/sim_out/xsim_script.tcl}
+# Log file           : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/xsim.log
+# Journal file       : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/xsim.jou
+# Running On         : ite375pc10.cs.umbc.edu
+# Platform           : unknown
+# Operating System   : unknown
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-11700 @ 2.50GHz
+# CPU Frequency      : 4212.627 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 33088 MB
+# Swap memory        : 0 MB
+# Total Virtual      : 33088 MB
+# Available Virtual  : 28924 MB
+#-----------------------------------------------------------
+start_gui
+source xsim.dir/sim_out/xsim_script.tcl
+# set_param project.enableReportConfiguration 0
+# load_feature core
+# current_fileset
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/umbc/software/Xilinx/Vivado/2024.2/data/ip'.
+# xsim {sim_out} -autoloadwcfg
+Time resolution is 1 ps
+create_wave_config; add_wave /; set_property needs_save false [current_wave_config]
+run all
+FATAL_ERROR: Iteration limit 10000 is reached. Possible zero delay oscillation detected where simulation time can not advance. Please check your source code. Note that the iteration limit can be changed using switch -maxdeltaid.
+Time: 335 ns  Iteration: 10000
+close_sim
+INFO: xsimkernel Simulation Memory Usage: 486292 KB (Peak: 534436 KB), Simulation CPU Usage: 820 ms
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting xsim at Wed Oct 29 20:20:00 2025...
