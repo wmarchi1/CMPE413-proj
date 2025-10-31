@@ -1,0 +1,17 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-top
+cacheCell_tb
+cacheCell.vhd
+Dlatch.vhd
+tx.vhd
+selector.vhd
+and2.vhd
+inv.vhd
+cacheCell_tb.vhd
+-input
+ncsim.run
+-access
++rwc
