@@ -9,7 +9,6 @@ entity cache_fsm is
         Busy, MAIN_MEM_EN, O_EN, WR_TAG,
         ST_SEL, DATA_SEL, M_EN, s_reset : out std_logic;
         B_OFFSET : out std_logic_vector(1 downto 0);
-		temp_eq_f : out std_logic := '0';
         CS      : out std_logic_vector(25 downto 0)
     );
 end cache_fsm;
@@ -190,7 +189,7 @@ begin
     d(25) <= done_all;
 
     ----------------------------------------------------------------
-    -- 19 D flip-flops (neg-edge)
+    -- 26 D flip-flops (neg-edge)
     ----------------------------------------------------------------
     dff0  : dff_neg port map(d(0),  clk, s(0));
     dff1  : dff_neg port map(d(1),  clk, s(1));
@@ -236,18 +235,17 @@ begin
     -- Output logic
     ----------------------------------------------------------------
     MAIN_MEM_EN <= s(6);
-    M_EN        <= s(3) or s(4) or s(11) or s(13) or s(15) or s(17) or s(19);
+    M_EN        <= s(3) or s(4) or s(15) or s(17) or s(19) or s(21) or s(23);
     Busy        <= s(1) or s(2) or s(4) or s(5) or s(6) or
                    s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or
                    s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23) or s(24);
     DATA_SEL    <= s(5) or s(6) or s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23);
-    ST_SEL      <= s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23);
+    ST_SEL      <= s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21);
     WR_TAG      <= s(23);
     O_EN        <= s(0) or s(25);
     B_OFFSET(0) <= s(16)  or s(17) or s(20) or s(21);
     B_OFFSET(1) <= s(18) or s(19) or s(20) or s(21);
     CS          <= d;
-	temp_eq_f <= temp_eq;
 	
 
 end Structural;
