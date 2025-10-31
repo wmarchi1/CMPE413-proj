@@ -24,7 +24,7 @@ architecture behavior of tb_cache_controller_top is
             DATA_SEL   : out std_logic;
             M_EN       : out std_logic;
             B_OFFSET   : out std_logic_vector(1 downto 0);
-            CS         : out std_logic_vector(18 downto 0);
+            CS         : out std_logic_vector(25 downto 0);
 			temp_eq_f : out std_logic;
 			s_reset : out std_logic
         );
@@ -45,7 +45,7 @@ architecture behavior of tb_cache_controller_top is
     signal DATA_SEL   : std_logic := '0';
     signal M_EN       : std_logic := '0';
     signal B_OFFSET   : std_logic_vector(1 downto 0);
-    signal CS: std_logic_vector(18 downto 0);
+    signal CS: std_logic_vector(25 downto 0);
 	signal s_reset : std_logic := '0';
 	signal temp_eq_f : std_logic := '0';
     -- Clock period
@@ -154,7 +154,7 @@ begin
        start <= '0';
         rd_wr_not <= '0';   -- Read
         CVT <= '0';         -- Miss	
-        for i in 1 to 22 loop
+        for i in 1 to 30 loop
             wait for clk_period;
         end loop;
         --------------------------------------------------------------------

@@ -10,7 +10,7 @@ entity cache_fsm is
         ST_SEL, DATA_SEL, M_EN, s_reset : out std_logic;
         B_OFFSET : out std_logic_vector(1 downto 0);
 		temp_eq_f : out std_logic := '0';
-        CS      : out std_logic_vector(18 downto 0)
+        CS      : out std_logic_vector(25 downto 0)
     );
 end cache_fsm;
 
@@ -28,8 +28,8 @@ architecture Structural of cache_fsm is
     ----------------------------------------------------------------
     -- Internal signals
     ----------------------------------------------------------------
-    signal s : std_logic_vector(18 downto 0);
-    signal d : std_logic_vector(18 downto 0);
+    signal s : std_logic_vector(25 downto 0);
+    signal d : std_logic_vector(25 downto 0);
 
     signal d18_from_rdd, d18_from_wdd, d18_from_rdmd, d18_from_wmdd : std_logic := '0';
     signal c, nc : std_logic_vector(4 downto 0) := (others => '0');
@@ -38,7 +38,7 @@ architecture Structural of cache_fsm is
     signal eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8, eq9, eq10, eq11, eq12, eq13, eq14, eq15, eq16,
            eq17, eq18, eq19 : std_logic := '0';
 
-    signal current_state_int : integer range 0 to 18;
+    signal current_state_int : integer range 0 to 25;
     signal current_state_hex : std_logic_vector(4 downto 0);
 
     signal t_idle_from_done, t_idle_hold, t_idle_pre, t_idle_clear : std_logic := '0';
@@ -137,7 +137,7 @@ begin
     -- Idle state (fixed feedback)
     ----------------------------------------------------------------
     -- Clear idle when start = 1
-    and_idle_done : and2 port map(s(18), n_start, t_idle_from_done); -- Done → Idle
+    and_idle_done : and2 port map(s(25), n_start, t_idle_from_done); -- Done → Idle
     and_idle_hold : and2 port map(s(0),  n_start, t_idle_hold);      -- Hold idle while start=0
     and_idle_clear: and2 port map(s(0),  start,   t_idle_clear);     -- Clear idle when start=1
 
@@ -162,25 +162,32 @@ begin
 
     and_rdm   : and2 port map(s(1),  n_cvt, d(5));
     and_enm   : and2 port map(s(5),  eq1,   d(6));
-	and_hold : and2 port map(s(6), temp_eq, d(7));	
-    and_b0    : and2 port map(s(7),  eq10,  d(8));
-    and_d0    : and2 port map(s(8),  eq11,  d(9));
-    and_b1    : and2 port map(s(9),  eq12,  d(10));
-    and_d1    : and2 port map(s(10), eq13,  d(11));
-    and_b2    : and2 port map(s(11), eq14,  d(12));
-    and_d2    : and2 port map(s(12), eq15,  d(13));
-    and_b3    : and2 port map(s(13), eq16,  d(14));
-    and_d3    : and2 port map(s(14), eq17,  d(15));
-    and_onen  : and2 port map(s(15), eq18,  d(16));
-    and_rdmd  : and2 port map(s(16), eq19,  d18_from_rdmd);
+	and_dbm : and2 port map(s(6), eq2, d(7));	
+	and_hold_1 : and2 port map(s(7), eq3, d(8));
+	and_hold_2 : and2 port map(s(8), eq4, d(9));
+	and_hold_3 : and2 port map(s(9), eq5, d(10));
+	and_hold_4 : and2 port map(s(10), eq6, d(11));
+	and_hold_5 : and2 port map(s(11), eq7, d(12));
+	and_hold_6 : and2 port map(s(12), eq8, d(13));
+	and_hold_7 : and2 port map(s(13), eq9, d(14));
+    and_b0    : and2 port map(s(14),  eq10,  d(15));
+    and_d0    : and2 port map(s(15),  eq11,  d(16));
+    and_b1    : and2 port map(s(16),  eq12,  d(17));
+    and_d1    : and2 port map(s(17), eq13,  d(18));
+    and_b2    : and2 port map(s(18), eq14,  d(19));
+    and_d2    : and2 port map(s(19), eq15,  d(20));
+    and_b3    : and2 port map(s(20), eq16,  d(21));
+    and_d3    : and2 port map(s(21), eq17,  d(22));
+    and_onen  : and2 port map(s(22), eq18,  d(23));
+    and_rdmd  : and2 port map(s(23), eq19,  d18_from_rdmd);
 
-    and_wrm  : and2 port map(s(2),  n_cvt, d(17));
-    and_wmdd : and2 port map(s(17), eq1,   d18_from_wmdd);
+    and_wrm  : and2 port map(s(2),  n_cvt, d(24));
+    and_wmdd : and2 port map(s(24), eq1,   d18_from_wmdd);
 
     or_done_a : or2 port map(d18_from_rdd, d18_from_wdd,  done_a);
     or_done_b : or2 port map(d18_from_rdmd, d18_from_wmdd, done_b);
     or_done_c : or2 port map(done_a, done_b, done_all);
-    d(18) <= done_all;
+    d(25) <= done_all;
 
     ----------------------------------------------------------------
     -- 19 D flip-flops (neg-edge)
@@ -204,14 +211,20 @@ begin
     dff16 : dff_neg port map(d(16), clk, s(16));
     dff17 : dff_neg port map(d(17), clk, s(17));
     dff18 : dff_neg port map(d(18), clk, s(18));
-
+    dff19 : dff_neg port map(d(19), clk, s(19));
+    dff20 : dff_neg port map(d(20), clk, s(20));
+    dff21 : dff_neg port map(d(21), clk, s(21));
+    dff22 : dff_neg port map(d(22), clk, s(22));
+    dff23 : dff_neg port map(d(23), clk, s(23));
+    dff24 : dff_neg port map(d(24), clk, s(24));
+    dff25 : dff_neg port map(d(25), clk, s(25));
     ----------------------------------------------------------------
     -- State monitor (for visualization)
     ----------------------------------------------------------------
     process(s)
     begin
         current_state_int <= 0;
-        for i in 0 to 18 loop
+        for i in 0 to 25 loop
             if s(i) = '1' then
                 current_state_int <= i;
             end if;
@@ -223,16 +236,16 @@ begin
     -- Output logic
     ----------------------------------------------------------------
     MAIN_MEM_EN <= s(6);
-    M_EN        <= s(3) or s(4) or s(8) or s(10) or s(12) or s(14) or s(16) or s(17);
+    M_EN        <= s(3) or s(4) or s(11) or s(13) or s(15) or s(17) or s(19);
     Busy        <= s(1) or s(2) or s(4) or s(5) or s(6) or
                    s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or
-                   s(13) or s(14) or s(15) or s(16) or s(17);
-    DATA_SEL    <= s(5) or s(6) or s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16);
-    ST_SEL      <= s(5) or s(6) or s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16);
-    WR_TAG      <= s(16);
-    O_EN        <= s(0) or s(18);
-    B_OFFSET(0) <= s(9)  or s(10) or s(13) or s(14);
-    B_OFFSET(1) <= s(11) or s(12) or s(13) or s(14);
+                   s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23) or s(24);
+    DATA_SEL    <= s(5) or s(6) or s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23);
+    ST_SEL      <= s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23);
+    WR_TAG      <= s(23);
+    O_EN        <= s(0) or s(25);
+    B_OFFSET(0) <= s(16)  or s(17) or s(20) or s(21);
+    B_OFFSET(1) <= s(18) or s(19) or s(20) or s(21);
     CS          <= d;
 	temp_eq_f <= temp_eq;
 	

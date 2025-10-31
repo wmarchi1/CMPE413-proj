@@ -16,7 +16,7 @@ entity cache_controller_top is
         DATA_SEL    : out std_logic;
         M_EN        : out std_logic;
         B_OFFSET    : out std_logic_vector(1 downto 0);
-        CS          : out std_logic_vector(18 downto 0);
+        CS          : out std_logic_vector(25 downto 0);
         Next_State  : out std_logic_vector(4 downto 0);
         counter_f     : out integer range 0 to 31;
         Busy        : out std_logic;
@@ -46,7 +46,7 @@ architecture Structural of cache_controller_top is
             DATA_SEL    : out std_logic;
             M_EN        : out std_logic;
             B_OFFSET    : out std_logic_vector(1 downto 0);
-            CS          : out std_logic_vector(18 downto 0);
+            CS          : out std_logic_vector(25 downto 0);
 			temp_eq_f : out std_logic;
 			s_reset : out std_logic
         );
