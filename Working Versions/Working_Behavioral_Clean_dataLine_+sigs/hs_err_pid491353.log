@@ -1,0 +1,23 @@
+#
+# An unexpected error has occurred (6)
+#
+Stack:
+/usr/lib64/libc.so.6(+0x3ebf0) [0x7f534123ebf0]
+/usr/lib64/libc.so.6(+0x8bedc) [0x7f534128bedc]
+/usr/lib64/libc.so.6(raise+0x16) [0x7f534123eb46]
+/usr/lib64/libc.so.6(abort+0xd3) [0x7f5341228833]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/Rhel/libstdc++.so.6(+0x8ba13) [0x7f5341730a13]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/Rhel/libstdc++.so.6(+0x91b86) [0x7f5341736b86]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/Rhel/libstdc++.so.6(+0x91bc1) [0x7f5341736bc1]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/Rhel/libstdc++.so.6(+0x91df4) [0x7f5341736df4]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/Rhel/libstdc++.so.6(_ZSt19__throw_ios_failurePKc+0x78) [0x7f5341766158]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/Rhel/libstdc++.so.6(+0xf312a) [0x7f534179812a]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/libxv_simbridge_kernel.so(SimBridge::WdbFileManager::close()+0x176) [0x7f534b708766]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/libxv_simbridge_kernel.so(SimBridge::WdbLiveReader::relaunchAfterRestart()+0x3d) [0x7f534b71d00d]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/libxv_wavedata.so(SimBridge::DataObjMgr::relaunchAfterRestart()+0x1b) [0x7f534bb1712b]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/libxv_wavedata.so(+0x2c2c05) [0x7f534ba5cc05]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/libxv_wavedata.so(+0x320cef) [0x7f534babacef]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/libxv_wavedata.so(SimBridge::BoostProcessTransport::runPrivateChannel()+0x70) [0x7f534b9d8770]
+/umbc/software/Xilinx/Vivado/2024.2/lib/lnx64.o/libboost_thread.so.1.72.0(+0x14167) [0x7f5347a86167]
+/usr/lib64/libc.so.6(+0x8a19a) [0x7f534128a19a]
+/usr/lib64/libc.so.6(+0x10f210) [0x7f534130f210]

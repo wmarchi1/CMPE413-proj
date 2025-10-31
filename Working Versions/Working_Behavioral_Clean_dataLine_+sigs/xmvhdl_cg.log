@@ -1,0 +1,16 @@
+TOOL:	xmvhdl_cg(64)	23.09-s013: Started on Oct 23, 2025 at 12:50:17 EDT
+xmvhdl_cg
+    -NOCOPYRIGHT
+    -NOVITALACCL
+    -MESSAGES
+    -CDSLIB ./xcelium.d/run.lnx8664.23.09.d/cdsrun.lib
+    -HDLVAR ./xcelium.d/run.lnx8664.23.09.d/hdlrun.var
+    -MESSAGES
+    -IMPLICIT worklib
+    -XHANDOFF worklib
+    -XHANDOFF worklib
+    WORKLIB.SELECTOR:STRUCTURAL
+
+WORKLIB.SELECTOR:STRUCTURAL (architecture):
+	streams: 4, words: 1153
+TOOL:	xmvhdl_cg(64)	23.09-s013: Exiting on Oct 23, 2025 at 12:50:18 EDT  (total: 00:00:01)
