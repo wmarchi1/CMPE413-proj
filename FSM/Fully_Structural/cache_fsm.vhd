@@ -18,7 +18,7 @@ architecture Structural of cache_fsm is
     -- Component declarations
     ----------------------------------------------------------------
     component and2  port(input0,input1:in std_logic; output0:out std_logic); end component;
-    component and3  port(input0,input1,input2:in std_logic; output0:out std_logic); end component;
+    component and3  port(x,y,z:in std_logic; o:out std_logic); end component;
     component and5  port(input0,input1,input2,input3,input4:in std_logic; output0:out std_logic); end component;
     component or2   port(input0,input1:in std_logic; output0:out std_logic); end component;
     component inv   port(inv_input:in std_logic; inv_out:out std_logic); end component;
