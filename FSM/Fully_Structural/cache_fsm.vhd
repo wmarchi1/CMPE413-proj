@@ -59,29 +59,14 @@ begin
 -- Synchronous reset detector (structural form, level-based)
 --------------------------------------------------------------------
 
---------------------------------------------------------------------
--- Rising-edge detector for reset (structural form, positive edge)
---------------------------------------------------------------------
+-- emulate first latch (posedge)
+rst_s1 <= (reset and clk) or (rst_s1 and not clk);
 
--- ONE-CYCLE, CLOCK-SYNCHRONOUS RISING-EDGE PULSE FOR 'reset'
--- Uses 2-stage sync and edge detect: pulse = rst_s1 AND NOT rst_s2
+-- emulate second latch (negedge)
+rst_s2 <= (rst_s1 and not clk) or (rst_s2 and clk);
 
--- 1) Synchronize 'reset' into this clock domain (two DFFs)
-dff_sync1 : dff_neg port map(d => reset,   clk => clk, q => rst_s1);
-dff_sync2 : dff_neg port map(d => rst_s1,  clk => clk, q => rst_s2);
-
--- 2) Edge detect between the two registered versions
-inv_s2    : inv     port map(inv_input => rst_s2,      inv_out => n_rst_s2);
-and_edge  : and2    port map(input0    => rst_s1,
-                             input1    => n_rst_s2,
-                             output0   => sreset_comb);
-
--- 3) (Recommended) Register the pulse so it’s exactly one full clock wide
-dff_pulse : dff_pos port map(d => sreset_comb, clk => clk, q => sreset_q);
-
--- Drive output (choose one):
-s_reset <= sreset_q;       -- registered, clean 1-cycle pulse
--- s_reset <= sreset_comb; -- unregistered comb, still synchronous but not registered
+-- synchronized reset output
+s_reset <= rst_s2;
 
 
 -- 2) Output stays high while reset is high, turns off when reset goes low
