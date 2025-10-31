@@ -73,7 +73,7 @@ begin
 								 output0   => sreset_comb);
 
 	-- 3) (Recommended) Register the pulse so it’s exactly one full clock wide
-	dff_pulse : dff_neg port map(d => sreset_comb, clk => clk, q => sreset_q);
+	dff_pulse : dff port map(d => sreset_comb, clk => clk, q => sreset_q);
 
 	-- Drive output (choose one):
 	s_reset <= sreset_q;       -- registered, clean 1-cycle pulse
