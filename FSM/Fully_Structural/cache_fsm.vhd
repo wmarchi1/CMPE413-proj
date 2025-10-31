@@ -45,8 +45,8 @@ architecture Structural of cache_fsm is
 	signal rst_s1, rst_s2 : std_logic := '1';
         -- two-stage synchronized reset
 	signal n_rst_s2       : std_logic;
-	signal reset_d1    : std_logic;
-	signal s_reset_internal       : std_logic;        -- registered one-cycle pulse (recommended)
+	signal sreset_comb    : std_logic;
+	signal sreset_q       : std_logic;        -- registered one-cycle pulse (recommended)
 begin
     ----------------------------------------------------------------
     -- Inversions
@@ -55,21 +55,16 @@ begin
     inv_rd    : inv port map(inv_input => rd_wr_not, inv_out => n_rd);
     inv_cvt   : inv port map(inv_input => CVT,       inv_out => n_cvt);
     inv_reset : inv port map(inv_input => reset,     inv_out => n_reset);
-process(clk)
-begin
-    if rising_edge(clk) then
-        reset_d1 <= reset;
+--------------------------------------------------------------------
+-- Synchronous reset detector (structural form, level-based)
+--------------------------------------------------------------------
 
-        -- Detect rising edge of reset, issue 1-cycle pulse
-        if (reset = '1' and reset_d1 = '0') then
-            s_reset_internal <= '1';
-        else
-            s_reset_internal <= '0';
-        end if;
-    end if;
-end process;
+-- 1) Synchronize 'reset' into this clock domain (two DFFs)
+dff_sync1 : dff_neg port map(d => reset,   clk => clk, q => rst_s1);
+dff_sync2 : dff port map(d => rst_s1,  clk => clk, q => rst_s2);
 
-s_reset <= s_reset_internal;
+-- 2) Output stays high while reset is high, turns off when reset goes low
+s_reset <= rst_s2;
 
 
 	
