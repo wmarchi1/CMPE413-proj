@@ -27,8 +27,8 @@ architecture Structural of cache_fsm is
     ----------------------------------------------------------------
     -- Internal signals
     ----------------------------------------------------------------
-    signal s : std_logic_vector(25 downto 0);
-    signal d : std_logic_vector(25 downto 0);
+    signal s : std_logic_vector(25 downto 0) := (others => '0');
+    signal d : std_logic_vector(25 downto 0) := (others => '0');
 
     signal d18_from_rdd, d18_from_wdd, d18_from_rdmd, d18_from_wmdd : std_logic := '0';
     signal c, nc : std_logic_vector(4 downto 0) := (others => '0');
@@ -66,10 +66,6 @@ rst_s1 <= (reset and clk) or (rst_s1 and not clk);
 rst_s2 <= (rst_s1 and not clk) or (rst_s2 and clk);
 
 -- synchronized reset output
-s_reset <= rst_s2;
-
-
--- 2) Output stays high while reset is high, turns off when reset goes low
 s_reset <= rst_s2;
 
 
@@ -235,7 +231,7 @@ s_reset <= rst_s2;
                    s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23) or s(24);
     DATA_SEL    <= s(5) or s(6) or s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21) or s(22) or s(23);
     ST_SEL      <= s(7) or s(8) or s(9) or s(10) or s(11) or s(12) or s(13) or s(14) or s(15) or s(16) or s(17) or s(18) or s(19) or s(20) or s(21);
-    WR_TAG      <= s(23);
+    WR_TAG      <= s(23) or s_reset;
     O_EN        <= s(0) or s(25);
     B_OFFSET(0) <= s(16)  or s(17) or s(20) or s(21);
     B_OFFSET(1) <= s(18) or s(19) or s(20) or s(21);
