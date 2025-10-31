@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2024.2.2 (64-bit)
+# SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+# IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+# SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+# Start of session at: Thu Oct 30 19:46:05 2025
+# Process ID         : 557396
+# Current directory  : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj
+# Command line       : vivado -mode batch -source vivado_sim.tcl
+# Log file           : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/vivado.log
+# Journal file       : /afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/vivado.jou
+# Running On         : ite375pc01.cs.umbc.edu
+# Platform           : unknown
+# Operating System   : unknown
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-11700 @ 2.50GHz
+# CPU Frequency      : 800.000 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 33088 MB
+# Swap memory        : 0 MB
+# Total Virtual      : 33088 MB
+# Available Virtual  : 27587 MB
+#-----------------------------------------------------------
+source vivado_sim.tcl
+# exec xvhdl dff_neg.vhd xor2.vhd mux42.vhd program_counter.vhd cache_fsm.vhd peripheral_interface2.vhd cache_controller_top.vhd chip.vhd chip_tb.vhd
+# exec xelab chip_tb -debug typical -s sim_out
+# exec xsim sim_out -gui
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 30 19:47:44 2025...

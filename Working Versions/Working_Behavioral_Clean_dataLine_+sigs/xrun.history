@@ -1,0 +1,31 @@
+s1(17Oct2025:17:05:54):  xrun -top selector_tb selector.vhd and2.vhd inv.vhd selector_tb.vhd -input ncsim.run -access +rwc 
+s2(17Oct2025:17:06:27):  xrun -top selector_tb selector.vhd and2.vhd inv.vhd selector_tb.vhd -input ncsim.run -access +rwc 
+s3(17Oct2025:17:37:33):  xrun -top cacheCell_tb dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd -input ncsim.run -access +rwc 
+s4(17Oct2025:17:38:00):  xrun -top cacheCell_tb dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s5(17Oct2025:17:40:24):  xrun -top cacheCell_tb cacheCell.vhd dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s6(17Oct2025:17:40:30):  xrun -top cacheCell_tb cacheCell.vhd dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s7(17Oct2025:17:42:04):  xrun -top cacheCell_tb cacheCell.vhd dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s8(17Oct2025:17:42:41):  xrun -top cacheCell_tb cacheCell.vhd dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s9(17Oct2025:17:43:56):  xrun -top cacheCell_tb cacheCell.vhd dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s10(17Oct2025:17:44:53):  xrun -top cacheCell_tb cacheCell.vhd dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s11(17Oct2025:17:45:35):  xrun -top cacheCell_tb cacheCell.vhd dff.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s12(17Oct2025:17:48:28):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s13(17Oct2025:17:49:36):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s14(17Oct2025:17:54:35):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s15(17Oct2025:17:57:26):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s16(17Oct2025:18:02:45):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s17(17Oct2025:18:04:18):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s18(17Oct2025:18:05:01):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s19(23Oct2025:12:46:06):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s20(23Oct2025:12:46:41):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd inv.vhd and2.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s21(23Oct2025:12:47:41):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s22(23Oct2025:12:47:46):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s23(23Oct2025:12:50:02):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s24(23Oct2025:12:50:16):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s25(23Oct2025:13:03:30):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s26(23Oct2025:13:08:20):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s27(23Oct2025:13:08:38):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s28(23Oct2025:13:14:06):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s29(23Oct2025:13:15:22):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s30(23Oct2025:13:23:55):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 
+s31(23Oct2025:13:27:11):  xrun -top cacheCell_tb cacheCell.vhd Dlatch.vhd tx.vhd selector.vhd and2.vhd inv.vhd cacheCell_tb.vhd -input ncsim.run -access +rwc 

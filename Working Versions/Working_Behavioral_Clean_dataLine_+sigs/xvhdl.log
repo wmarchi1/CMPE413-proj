@@ -1,0 +1,18 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/dff_neg.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'dff_neg'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/xor2.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'xor2'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/mux42.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'mux42'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/program_counter.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'program_counter'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/cache_fsm.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'cache_fsm'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/peripheral_interface2.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'peripheral_interface2'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/cache_controller_top.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'cache_controller_top'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/chip.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'chip'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/chip_tb.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'chip_tb'
