@@ -42,7 +42,7 @@ architecture Structural of cache_fsm is
 
     signal t_idle_from_done, t_idle_hold, t_idle_pre, t_idle_clear : std_logic := '0';
     signal done_a, done_b, done_all, temp_eq : std_logic := '0';
-	signal rst_s1, rst_s2 : std_logic := '1';
+	signal rst_s1, rst_s2 : std_logic := '0';
         -- two-stage synchronized reset
 	signal n_rst_s2       : std_logic;
 	signal sreset_comb    : std_logic;
@@ -67,6 +67,7 @@ rst_s2 <= (rst_s1 and not clk) or (rst_s2 and clk);
 
 -- synchronized reset output
 s_reset <= rst_s2;
+
 
 
 	
