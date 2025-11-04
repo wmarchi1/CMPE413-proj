@@ -71,7 +71,7 @@ exec xsim sim_out -gui
 ```
 
 
-### 3. `t_interface_tb.vhd`
+### 3. `vt_interface_tb.vhd`
 
 To run this testbench, use the following Vivado TCL script:
 
