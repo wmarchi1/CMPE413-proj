@@ -80,4 +80,5 @@ exec xvhdl mux413HML.vhd vt_regs.vhd vt_interface.vhd vt_interface_tb.vhd
 exec xelab vt_interface_tb -debug typical -s sim_out
 exec xsim sim_out -gui
 ```
+/afs/umbc.edu/users/m/u/mumar2/home/cadence/cadence_setup
 
