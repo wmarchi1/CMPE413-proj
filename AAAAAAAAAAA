@@ -1,0 +1,235 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity mux1618_data_out is
+    port(
+        byte_data_in0 : in std_logic_vector(7 downto 0);
+        byte_data_in1 : in std_logic_vector(7 downto 0);
+        byte_data_in2 : in std_logic_vector(7 downto 0);
+        byte_data_in3 : in std_logic_vector(7 downto 0);
+        byte_data_in4 : in std_logic_vector(7 downto 0);
+        byte_data_in5 : in std_logic_vector(7 downto 0);
+        byte_data_in6 : in std_logic_vector(7 downto 0);
+        byte_data_in7 : in std_logic_vector(7 downto 0);
+        byte_data_in8 : in std_logic_vector(7 downto 0);
+        byte_data_in9 : in std_logic_vector(7 downto 0);
+        byte_data_in10 : in std_logic_vector(7 downto 0);
+        byte_data_in11 : in std_logic_vector(7 downto 0);
+        byte_data_in12 : in std_logic_vector(7 downto 0);
+        byte_data_in13 : in std_logic_vector(7 downto 0);
+        byte_data_in14 : in std_logic_vector(7 downto 0);
+        byte_data_in15 : in std_logic_vector(7 downto 0);
+        mux1618_sel   : in  std_logic_vector(3 downto 0); -- expecting Ca[3:0]
+        mux1618_out   : out std_logic_vector(7 downto 0) -- output
+    );
+end mux1618_data_out;
+
+architecture structural of mux1618_data_out is
+
+    component mux161
+        port(
+            mux16_input : in  std_logic_vector(15 downto 0); -- 16 data inputs
+            mux16_sel   : in  std_logic_vector(3 downto 0); -- 4-bit select
+            mux16_out   : out std_logic -- output
+        );
+    end component;
+
+    signal bit0, bit1, bit2, bit3, bit4, bit5, bit6, bit7 : std_logic_vector(15 downto 0);
+
+begin
+        -- bit0 connections
+    bit0(15) <= byte_data_in15(0);
+    bit0(14) <= byte_data_in14(0);
+    bit0(13) <= byte_data_in13(0);
+    bit0(12) <= byte_data_in12(0);
+    bit0(11) <= byte_data_in11(0);
+    bit0(10) <= byte_data_in10(0);
+    bit0(9)  <= byte_data_in9(0);
+    bit0(8)  <= byte_data_in8(0);
+    bit0(7)  <= byte_data_in7(0);
+    bit0(6)  <= byte_data_in6(0);
+    bit0(5)  <= byte_data_in5(0);
+    bit0(4)  <= byte_data_in4(0);
+    bit0(3)  <= byte_data_in3(0);
+    bit0(2)  <= byte_data_in2(0);
+    bit0(1)  <= byte_data_in1(0);
+    bit0(0)  <= byte_data_in0(0);
+
+    -- bit1 connections
+    bit1(15) <= byte_data_in15(1);
+    bit1(14) <= byte_data_in14(1);
+    bit1(13) <= byte_data_in13(1);
+    bit1(12) <= byte_data_in12(1);
+    bit1(11) <= byte_data_in11(1);
+    bit1(10) <= byte_data_in10(1);
+    bit1(9)  <= byte_data_in9(1);
+    bit1(8)  <= byte_data_in8(1);
+    bit1(7)  <= byte_data_in7(1);
+    bit1(6)  <= byte_data_in6(1);
+    bit1(5)  <= byte_data_in5(1);
+    bit1(4)  <= byte_data_in4(1);
+    bit1(3)  <= byte_data_in3(1);
+    bit1(2)  <= byte_data_in2(1);
+    bit1(1)  <= byte_data_in1(1);
+    bit1(0)  <= byte_data_in0(1);
+
+    -- bit2
+    bit2(15) <= byte_data_in15(2);
+    bit2(14) <= byte_data_in14(2);
+    bit2(13) <= byte_data_in13(2);
+    bit2(12) <= byte_data_in12(2);
+    bit2(11) <= byte_data_in11(2);
+    bit2(10) <= byte_data_in10(2);
+    bit2(9)  <= byte_data_in9(2);
+    bit2(8)  <= byte_data_in8(2);
+    bit2(7)  <= byte_data_in7(2);
+    bit2(6)  <= byte_data_in6(2);
+    bit2(5)  <= byte_data_in5(2);
+    bit2(4)  <= byte_data_in4(2);
+    bit2(3)  <= byte_data_in3(2);
+    bit2(2)  <= byte_data_in2(2);
+    bit2(1)  <= byte_data_in1(2);
+    bit2(0)  <= byte_data_in0(2);
+
+    -- bit3
+    bit3(15) <= byte_data_in15(3);
+    bit3(14) <= byte_data_in14(3);
+    bit3(13) <= byte_data_in13(3);
+    bit3(12) <= byte_data_in12(3);
+    bit3(11) <= byte_data_in11(3);
+    bit3(10) <= byte_data_in10(3);
+    bit3(9)  <= byte_data_in9(3);
+    bit3(8)  <= byte_data_in8(3);
+    bit3(7)  <= byte_data_in7(3);
+    bit3(6)  <= byte_data_in6(3);
+    bit3(5)  <= byte_data_in5(3);
+    bit3(4)  <= byte_data_in4(3);
+    bit3(3)  <= byte_data_in3(3);
+    bit3(2)  <= byte_data_in2(3);
+    bit3(1)  <= byte_data_in1(3);
+    bit3(0)  <= byte_data_in0(3);
+
+    -- bit4
+    bit4(15) <= byte_data_in15(4);
+    bit4(14) <= byte_data_in14(4);
+    bit4(13) <= byte_data_in13(4);
+    bit4(12) <= byte_data_in12(4);
+    bit4(11) <= byte_data_in11(4);
+    bit4(10) <= byte_data_in10(4);
+    bit4(9)  <= byte_data_in9(4);
+    bit4(8)  <= byte_data_in8(4);
+    bit4(7)  <= byte_data_in7(4);
+    bit4(6)  <= byte_data_in6(4);
+    bit4(5)  <= byte_data_in5(4);
+    bit4(4)  <= byte_data_in4(4);
+    bit4(3)  <= byte_data_in3(4);
+    bit4(2)  <= byte_data_in2(4);
+    bit4(1)  <= byte_data_in1(4);
+    bit4(0)  <= byte_data_in0(4);
+
+    -- bit5
+    bit5(15) <= byte_data_in15(5);
+    bit5(14) <= byte_data_in14(5);
+    bit5(13) <= byte_data_in13(5);
+    bit5(12) <= byte_data_in12(5);
+    bit5(11) <= byte_data_in11(5);
+    bit5(10) <= byte_data_in10(5);
+    bit5(9)  <= byte_data_in9(5);
+    bit5(8)  <= byte_data_in8(5);
+    bit5(7)  <= byte_data_in7(5);
+    bit5(6)  <= byte_data_in6(5);
+    bit5(5)  <= byte_data_in5(5);
+    bit5(4)  <= byte_data_in4(5);
+    bit5(3)  <= byte_data_in3(5);
+    bit5(2)  <= byte_data_in2(5);
+    bit5(1)  <= byte_data_in1(5);
+    bit5(0)  <= byte_data_in0(5);
+
+    -- bit6
+    bit6(15) <= byte_data_in15(6);
+    bit6(14) <= byte_data_in14(6);
+    bit6(13) <= byte_data_in13(6);
+    bit6(12) <= byte_data_in12(6);
+    bit6(11) <= byte_data_in11(6);
+    bit6(10) <= byte_data_in10(6);
+    bit6(9)  <= byte_data_in9(6);
+    bit6(8)  <= byte_data_in8(6);
+    bit6(7)  <= byte_data_in7(6);
+    bit6(6)  <= byte_data_in6(6);
+    bit6(5)  <= byte_data_in5(6);
+    bit6(4)  <= byte_data_in4(6);
+    bit6(3)  <= byte_data_in3(6);
+    bit6(2)  <= byte_data_in2(6);
+    bit6(1)  <= byte_data_in1(6);
+    bit6(0)  <= byte_data_in0(6);
+
+    -- bit7
+    bit7(15) <= byte_data_in15(7);
+    bit7(14) <= byte_data_in14(7);
+    bit7(13) <= byte_data_in13(7);
+    bit7(12) <= byte_data_in12(7);
+    bit7(11) <= byte_data_in11(7);
+    bit7(10) <= byte_data_in10(7);
+    bit7(9)  <= byte_data_in9(7);
+    bit7(8)  <= byte_data_in8(7);
+    bit7(7)  <= byte_data_in7(7);
+    bit7(6)  <= byte_data_in6(7);
+    bit7(5)  <= byte_data_in5(7);
+    bit7(4)  <= byte_data_in4(7);
+    bit7(3)  <= byte_data_in3(7);
+    bit7(2)  <= byte_data_in2(7);
+    bit7(1)  <= byte_data_in1(7);
+    bit7(0)  <= byte_data_in0(7);
+
+            
+    mux161_bit0 : mux161 
+        port map (
+            mux16_input => bit0,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(0)
+        );
+    mux161_bit1 : mux161 
+        port map (
+            mux16_input => bit1,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(1)
+        );
+    mux161_bit2 : mux161 
+        port map (
+            mux16_input => bit2,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(2)
+        );
+    mux161_bit3 : mux161 
+        port map (
+            mux16_input => bit3,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(3)
+        );
+     mux161_bit4 : mux161 
+        port map (
+            mux16_input => bit4,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(4)
+        );
+    mux161_bit5 : mux161 
+        port map (
+            mux16_input => bit5,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(5)
+        );
+    mux161_bit6 : mux161 
+        port map (
+            mux16_input => bit6,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(6)
+        );
+    mux161_bit7 : mux161 
+        port map (
+            mux16_input => bit7,
+            mux16_sel   => mux1618_sel,
+            mux16_out   => mux1618_out(7)
+        );
+
+
+end structural;
