@@ -17,7 +17,7 @@ entity chip is
         Gnd        : in  std_logic;
         busy       : out std_logic;
         mem_en     : out std_logic;
-        mem_add    : out std_logic_vector(7 downto 0)
+        mem_add    : out std_logic_vector(5 downto 0)
         ); 
 end chip;
   
@@ -28,7 +28,7 @@ end chip;
                 rd_wr : in std_logic;
                 reset : in std_logic;
                 cpu_address : in std_logic_vector(5 downto 0);
-                main_mem_data_in : in std_logic_vector(5 downto 0);
+                main_mem_data_in : in std_logic_vector(7 downto 0);
                 cpu_data_in : in std_logic_vector(7 downto 0);
                 cpu_data_out : out std_logic_vector(7 downto 0);
                 data_out_enable : in std_logic;
@@ -105,6 +105,13 @@ end chip;
                 q   : out std_logic_vector(7 downto 0)
             );
         end component;
+        component dff6bit_pos
+            port(
+                d   : in  std_logic_vector(5 downto 0);
+                clk : in  std_logic;
+                q   : out std_logic_vector(5 downto 0)
+            );
+        end component;
 
         signal busy_net, read_write_net1, read_write_net, cvt_net, counter_net, wr_tag_net, data_sel_net : std_logic;
         signal  cache_mem_enable_net, vt_reset_net, byte_address_sel_net, output_enable : std_logic;
@@ -116,7 +123,7 @@ end chip;
 
     begin
         -- address register
-        dff8bit_pos_inst0 : dff8bit_pos
+        dff6bit_pos_inst0 : dff6bit_pos
             port map(
                 d => cpu_add,
                 clk => busy_net, 
