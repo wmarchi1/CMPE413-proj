@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sim_out.wdb" id="1">
+         <top_modules>
+            <top_module name="chip_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,009.203 ns"></ZoomEndTime>
+      <Cursor1Time time="1,010.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="276"></NameColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="25" />
+   <wvobject type="logic" fp_name="/chip_tb/clk_tb">
+      <obj_property name="ElementShortName">clk_tb</obj_property>
+      <obj_property name="ObjectShortName">clk_tb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/cpu_add_tb">
+      <obj_property name="ElementShortName">cpu_add_tb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_add_tb[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/cpu_data_tb">
+      <obj_property name="ElementShortName">cpu_data_tb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_data_tb[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/cpu_rd_wrn_tb">
+      <obj_property name="ElementShortName">cpu_rd_wrn_tb</obj_property>
+      <obj_property name="ObjectShortName">cpu_rd_wrn_tb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/start_tb">
+      <obj_property name="ElementShortName">start_tb</obj_property>
+      <obj_property name="ObjectShortName">start_tb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/reset_tb">
+      <obj_property name="ElementShortName">reset_tb</obj_property>
+      <obj_property name="ObjectShortName">reset_tb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/mem_data_tb">
+      <obj_property name="ElementShortName">mem_data_tb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_data_tb[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/busy_tb">
+      <obj_property name="ElementShortName">busy_tb</obj_property>
+      <obj_property name="ObjectShortName">busy_tb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/mem_en_tb">
+      <obj_property name="ElementShortName">mem_en_tb</obj_property>
+      <obj_property name="ObjectShortName">mem_en_tb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/mem_add_tb">
+      <obj_property name="ElementShortName">mem_add_tb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_add_tb[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/Vdd_tb">
+      <obj_property name="ElementShortName">Vdd_tb</obj_property>
+      <obj_property name="ObjectShortName">Vdd_tb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/Gnd_tb">
+      <obj_property name="ElementShortName">Gnd_tb</obj_property>
+      <obj_property name="ObjectShortName">Gnd_tb</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/chip_tb/counter_out_tb">
+      <obj_property name="ElementShortName">counter_out_tb</obj_property>
+      <obj_property name="ObjectShortName">counter_out_tb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/output_enable_tb">
+      <obj_property name="ElementShortName">output_enable_tb</obj_property>
+      <obj_property name="ObjectShortName">output_enable_tb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/CS_out_tb">
+      <obj_property name="ElementShortName">CS_out_tb[4:0]</obj_property>
+      <obj_property name="ObjectShortName">CS_out_tb[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/Next_State_out_tb">
+      <obj_property name="ElementShortName">Next_State_out_tb[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Next_State_out_tb[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/cvt_out_tb">
+      <obj_property name="ElementShortName">cvt_out_tb</obj_property>
+      <obj_property name="ObjectShortName">cvt_out_tb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/cpu_address_net_out_tb">
+      <obj_property name="ElementShortName">cpu_address_net_out_tb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_address_net_out_tb[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/read_write_net_out">
+      <obj_property name="ElementShortName">read_write_net_out</obj_property>
+      <obj_property name="ObjectShortName">read_write_net_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/cache_mem_enable_tb">
+      <obj_property name="ElementShortName">cache_mem_enable_tb</obj_property>
+      <obj_property name="ObjectShortName">cache_mem_enable_tb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/data_sel_out_tb">
+      <obj_property name="ElementShortName">data_sel_out_tb</obj_property>
+      <obj_property name="ObjectShortName">data_sel_out_tb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/chip_tb/b_offset_out_tb">
+      <obj_property name="ElementShortName">b_offset_out_tb[1:0]</obj_property>
+      <obj_property name="ObjectShortName">b_offset_out_tb[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/byte_address_sel_net_out_tb">
+      <obj_property name="ElementShortName">byte_address_sel_net_out_tb</obj_property>
+      <obj_property name="ObjectShortName">byte_address_sel_net_out_tb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/chip_tb/force_write_tb">
+      <obj_property name="ElementShortName">force_write_tb</obj_property>
+      <obj_property name="ObjectShortName">force_write_tb</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/chip_tb/clk_period">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+</wave_config>
