@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2.2 (64-bit)
+# SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+# IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+# SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+# Start of session at: Thu Nov 13 19:25:00 2025
+# Process ID         : 7915
+# Current directory  : /afs/umbc.edu/users/m/u/mumar2/home/cadence/cadence_setup/Project/FinalProj
+# Command line       : vivado -init /umbc/software/scripts/vivado_init.tcl
+# Log file           : /afs/umbc.edu/users/m/u/mumar2/home/cadence/cadence_setup/Project/FinalProj/vivado.log
+# Journal file       : /afs/umbc.edu/users/m/u/mumar2/home/cadence/cadence_setup/Project/FinalProj/vivado.jou
+# Running On         : ite375pc20.cs.umbc.edu
+# Platform           : unknown
+# Operating System   : unknown
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-11700 @ 2.50GHz
+# CPU Frequency      : 800.000 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 33088 MB
+# Swap memory        : 0 MB
+# Total Virtual      : 33088 MB
+# Available Virtual  : 30038 MB
+#-----------------------------------------------------------
+start_gui
