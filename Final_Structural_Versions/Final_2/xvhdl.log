@@ -1,0 +1,8 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/mux413HML.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'mux413HML'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/vt_regs.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'vt_regs'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/vt_interface.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'vt_interface'
+INFO: [VRFC 10-163] Analyzing VHDL file "/afs/umbc.edu/users/w/m/wmarchi1/home/cadence/cadence_setup/FinalProj/vt_interface_tb.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'vt_interface_tb'

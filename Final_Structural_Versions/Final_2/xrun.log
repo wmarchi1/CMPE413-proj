@@ -1,0 +1,18 @@
+xrun(64): 23.09-s013: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	23.09-s013: Started on Oct 23, 2025 at 13:27:11 EDT
+xrun
+	-top cacheCell_tb
+	cacheCell.vhd
+	Dlatch.vhd
+	tx.vhd
+	selector.vhd
+	and2.vhd
+	inv.vhd
+	cacheCell_tb.vhd
+	-input ncsim.run
+	-access +rwc
+Loading snapshot worklib.cachecell_tb:test .................... Done
+xcelium> run 90 ns
+Ran until 90 NS + 0
+xcelium> exit
+TOOL:	xrun(64)	23.09-s013: Exiting on Oct 23, 2025 at 13:27:11 EDT  (total: 00:00:00)

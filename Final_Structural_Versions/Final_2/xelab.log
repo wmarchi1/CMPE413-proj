@@ -1,0 +1,30 @@
+Vivado Simulator v2024.2.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /umbc/software/Xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab vt_interface_tb -debug typical -s sim_out 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling architecture structural of entity work.inv [inv_default]
+Compiling architecture structural of entity work.and2 [and2_default]
+Compiling architecture structural of entity work.or2 [or2_default]
+Compiling architecture structural of entity work.decoder24_weird [decoder24_weird_default]
+Compiling architecture structural of entity work.nand2 [nand2_default]
+Compiling architecture structural of entity work.dlatch [dlatch_default]
+Compiling architecture structural of entity work.dff [dff_default]
+Compiling architecture structural of entity work.dff2bit [dff2bit_default]
+Compiling architecture structural of entity work.vt_regs [vt_regs_default]
+Compiling architecture structural of entity work.mux21 [mux21_default]
+Compiling architecture structural of entity work.mux42 [mux42_default]
+Compiling architecture structural of entity work.xnor2 [xnor2_default]
+Compiling architecture structural of entity work.hit_miss [hit_miss_default]
+Compiling architecture structural of entity work.mux413HML [mux413hml_default]
+Compiling architecture structural of entity work.vt_interface [vt_interface_default]
+Compiling architecture sim of entity work.vt_interface_tb
+Built simulation snapshot sim_out
